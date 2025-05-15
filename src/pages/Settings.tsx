@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { useI18n } from '@/lib/i18n';
 import { Globe, Bell, Check } from 'lucide-react';
+import { Switch } from '@/components/ui/switch';
 
 const Settings: React.FC = () => {
   const { t, language, setLanguage } = useI18n();
@@ -77,72 +77,27 @@ const Settings: React.FC = () => {
               <label htmlFor="email-notifications" className="text-sm font-medium">
                 {t('emailNotifications')}
               </label>
-              <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                <input 
-                  type="checkbox" 
-                  name="email-notifications" 
-                  id="email-notifications" 
-                  className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
-                />
-                <label 
-                  htmlFor="email-notifications" 
-                  className="toggle-label block overflow-hidden h-6 rounded-full bg-muted cursor-pointer"
-                />
-              </div>
+              <Switch id="email-notifications" />
             </div>
             
             <div className="flex items-center justify-between">
               <label htmlFor="session-reminders" className="text-sm font-medium">
                 Session Reminders
               </label>
-              <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                <input 
-                  type="checkbox" 
-                  name="session-reminders" 
-                  id="session-reminders" 
-                  className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
-                  defaultChecked
-                />
-                <label 
-                  htmlFor="session-reminders" 
-                  className="toggle-label block overflow-hidden h-6 rounded-full bg-muted cursor-pointer"
-                />
-              </div>
+              <Switch id="session-reminders" defaultChecked />
             </div>
             
             <div className="flex items-center justify-between">
               <label htmlFor="task-reminders" className="text-sm font-medium">
                 Task Due Date Reminders
               </label>
-              <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                <input 
-                  type="checkbox" 
-                  name="task-reminders" 
-                  id="task-reminders" 
-                  className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
-                  defaultChecked
-                />
-                <label 
-                  htmlFor="task-reminders" 
-                  className="toggle-label block overflow-hidden h-6 rounded-full bg-muted cursor-pointer"
-                />
-              </div>
+              <Switch id="task-reminders" defaultChecked />
             </div>
           </div>
         </div>
         
         {/* Add more settings sections as needed */}
       </div>
-      
-      <style jsx>{`
-        .toggle-checkbox:checked {
-          right: 0;
-          border-color: #3730A3;
-        }
-        .toggle-checkbox:checked + .toggle-label {
-          background-color: #3730A3;
-        }
-      `}</style>
     </div>
   );
 };
