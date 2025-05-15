@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/lib/auth/AuthContext';
 import { useI18n } from '@/lib/i18n';
 import { Github } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
 
 const Login: React.FC = () => {
   const { login, loginWithGithub, isLoading } = useAuth();
@@ -40,113 +44,113 @@ const Login: React.FC = () => {
   };
   
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
-      <div className="absolute top-4 right-4">
-        <button 
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950 flex items-center justify-center p-4">
+      <div className="absolute top-0 left-0 w-full h-full bg-[url('/background-pattern.svg')] bg-repeat opacity-5 z-0"></div>
+      
+      <div className="absolute top-4 right-4 z-10">
+        <Button 
           onClick={toggleLanguage}
-          className="px-3 py-1.5 text-sm border border-border rounded-md"
+          variant="outline"
+          className="px-4 py-2 backdrop-blur-md bg-white/30 dark:bg-black/30 border border-white/20 dark:border-white/10 text-sm font-medium rounded-md transition-all hover:bg-white/40 dark:hover:bg-black/40"
         >
           {language === 'en' ? 'हिंदी' : 'English'}
-        </button>
+        </Button>
       </div>
       
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md z-10">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-primary">DevFocus</h1>
-          <p className="text-muted-foreground mt-2">
+          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">DevFocus</h1>
+          <p className="text-muted-foreground mt-2 font-medium">
             Productivity for Developers
           </p>
         </div>
         
-        <div className="bg-card shadow-md rounded-lg p-6 border border-border">
-          <h2 className="text-xl font-semibold mb-6">{t('login')}</h2>
+        <div className="backdrop-blur-xl bg-white/20 dark:bg-black/20 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-white/30 dark:border-white/10 p-8">
+          <h2 className="text-xl font-semibold mb-6 text-center">{t('login')}</h2>
           
           {error && (
-            <div className="bg-destructive/10 text-destructive text-sm p-3 rounded-md mb-4">
+            <div className="bg-destructive/10 text-destructive text-sm p-4 rounded-lg backdrop-blur-sm mb-6">
               {error}
             </div>
           )}
           
-          <button
+          <Button
             onClick={handleGithubLogin}
             disabled={isLoading}
-            className="flex items-center justify-center w-full bg-gray-800 text-white py-2 px-4 rounded-md hover:bg-gray-900 transition-colors mb-4"
+            className="flex items-center justify-center w-full backdrop-blur-md bg-black/80 text-white hover:bg-black/90 py-2 px-4 rounded-lg transition-all mb-6"
           >
             <Github className="h-5 w-5 mr-2" />
             {t('loginWithGithub')}
-          </button>
+          </Button>
           
-          <div className="relative my-4">
+          <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-border"></div>
+              <div className="w-full border-t border-white/20 dark:border-white/10"></div>
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-card px-2 text-muted-foreground">
+              <span className="backdrop-blur-md bg-white/30 dark:bg-black/30 px-2 text-muted-foreground">
                 {t('loginWithEmail')}
               </span>
             </div>
           </div>
           
-          <form onSubmit={handleLogin}>
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-1">
-                  {t('email')}
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium mb-1">
+          <form onSubmit={handleLogin} className="space-y-5">
+            <div className="space-y-2">
+              <Label htmlFor="email" className="text-sm font-medium text-foreground">
+                {t('email')}
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full backdrop-blur-md bg-white/10 dark:bg-white/5 border border-white/20 dark:border-white/10 text-foreground focus:ring-2 focus:ring-primary/30"
+                placeholder="your.email@example.com"
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="password" className="text-sm font-medium text-foreground">
                   {t('password')}
-                </label>
-                <input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
-                />
-              </div>
-              
-              <div className="flex items-center justify-between text-sm">
-                <div className="flex items-center">
-                  <input
-                    id="remember-me"
-                    type="checkbox"
-                    className="h-4 w-4 text-primary border-border rounded"
-                  />
-                  <label htmlFor="remember-me" className="ml-2 block text-sm">
-                    Remember me
-                  </label>
-                </div>
-                
-                <a href="#" className="text-primary hover:underline">
+                </Label>
+                <a href="#" className="text-xs text-primary hover:text-primary/90 hover:underline">
                   {t('forgotPassword')}
                 </a>
               </div>
-              
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full bg-primary text-primary-foreground py-2 px-4 rounded-md hover:bg-primary/90 transition-colors"
-              >
-                {isLoading ? t('loading') : t('login')}
-              </button>
+              <Input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-full backdrop-blur-md bg-white/10 dark:bg-white/5 border border-white/20 dark:border-white/10 text-foreground focus:ring-2 focus:ring-primary/30"
+              />
             </div>
+            
+            <div className="flex items-center space-x-2">
+              <Checkbox id="remember-me" />
+              <label
+                htmlFor="remember-me"
+                className="text-sm text-muted-foreground cursor-pointer"
+              >
+                Remember me
+              </label>
+            </div>
+            
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white font-medium py-2 rounded-lg transition-all"
+            >
+              {isLoading ? t('loading') : t('login')}
+            </Button>
           </form>
           
           <div className="mt-6 text-center text-sm">
             <span className="text-muted-foreground">{t('dontHaveAccount')} </span>
-            <a href="/signup" className="text-primary hover:underline">
+            <a href="/signup" className="text-primary font-medium hover:underline">
               {t('signup')}
             </a>
           </div>
@@ -155,7 +159,7 @@ const Login: React.FC = () => {
       
       {/* Mock login for development */}
       {process.env.NODE_ENV === 'development' && (
-        <div className="mt-8 text-sm text-muted-foreground">
+        <div className="mt-8 text-sm text-muted-foreground absolute bottom-4 text-center">
           <p>Development mode: Use any email/password to login</p>
         </div>
       )}

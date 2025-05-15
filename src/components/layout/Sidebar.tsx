@@ -24,39 +24,39 @@ const Sidebar: React.FC = () => {
   };
 
   return (
-    <div className="hidden md:flex w-64 flex-col fixed h-full bg-sidebar border-r border-border">
-      <div className="p-4 border-b border-border">
-        <h1 className="text-2xl font-bold text-primary">DevFocus</h1>
+    <div className="hidden md:flex w-64 flex-col fixed h-full backdrop-blur-xl bg-white/10 dark:bg-black/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] border-r border-white/20 dark:border-white/10 z-10">
+      <div className="p-6 border-b border-white/20 dark:border-white/10">
+        <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">DevFocus</h1>
         <p className="text-sm text-muted-foreground">Productivity for Developers</p>
       </div>
       
-      <nav className="flex-1 py-4 overflow-y-auto">
-        <ul className="space-y-1">
+      <nav className="flex-1 py-6 overflow-y-auto scrollbar-thin">
+        <ul className="space-y-2 px-3">
           {navItems.map((item) => (
             <li key={item.path}>
               <Link
                 to={item.path}
-                className={`flex items-center px-4 py-3 text-sm rounded-md transition-colors ${
+                className={`flex items-center px-4 py-3 text-sm rounded-lg transition-all ${
                   isActive(item.path)
-                    ? 'bg-primary text-primary-foreground'
-                    : 'text-foreground hover:bg-muted'
+                    ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20'
+                    : 'backdrop-blur-md bg-white/10 dark:bg-white/5 text-foreground hover:bg-white/20 dark:hover:bg-white/10'
                 }`}
               >
                 {item.icon}
-                <span className="ml-3">{item.label}</span>
+                <span className="ml-3 font-medium">{item.label}</span>
               </Link>
             </li>
           ))}
         </ul>
       </nav>
       
-      <div className="p-4 border-t border-border">
+      <div className="p-6 border-t border-white/20 dark:border-white/10">
         <button
           onClick={() => logout()}
-          className="flex items-center w-full px-4 py-2 text-sm rounded-md text-foreground hover:bg-muted transition-colors"
+          className="flex items-center w-full px-4 py-3 text-sm rounded-lg backdrop-blur-md bg-white/10 dark:bg-white/5 text-foreground hover:bg-white/20 dark:hover:bg-white/10 transition-all"
         >
           <LogOut className="h-5 w-5" />
-          <span className="ml-3">Logout</span>
+          <span className="ml-3 font-medium">Logout</span>
         </button>
       </div>
     </div>
