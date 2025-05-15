@@ -2,10 +2,14 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/lib/auth/AuthContext';
-import Login from './Auth/Login';
+import { DataProvider } from '@/lib/data/DataContext';
 
-const Index: React.FC = () => {
-  const { isAuthenticated, isLoading } = useAuth();
+type PrivateRouteProps = {
+  children: React.ReactNode;
+};
+
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
+  const { isAuthenticated, isLoading, user } = useAuth();
   
   if (isLoading) {
     return (
@@ -18,11 +22,15 @@ const Index: React.FC = () => {
     );
   }
   
-  if (isAuthenticated) {
-    return <Navigate to="/dashboard" replace />;
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
   }
   
-  return <Login />;
+  return (
+    <DataProvider userId={user?.id || '1'}>
+      {children}
+    </DataProvider>
+  );
 };
 
-export default Index;
+export default PrivateRoute;
