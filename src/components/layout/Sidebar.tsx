@@ -3,7 +3,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useI18n } from '@/lib/i18n';
 import { useAuth } from '@/lib/auth/AuthContext';
-import { Home, Folders, CalendarClock, MessageSquare, Settings, LogOut } from 'lucide-react';
+import { Home, Folders, CalendarClock, MessageSquare, Settings, LogOut, Timer } from 'lucide-react';
 
 const Sidebar: React.FC = () => {
   const { t } = useI18n();
@@ -14,6 +14,7 @@ const Sidebar: React.FC = () => {
     { path: '/dashboard', label: t('dashboard'), icon: <Home className="h-5 w-5" /> },
     { path: '/projects', label: t('projects'), icon: <Folders className="h-5 w-5" /> },
     { path: '/sessions', label: t('sessions'), icon: <CalendarClock className="h-5 w-5" /> },
+    { path: '/focus-timer', label: 'Focus Timer', icon: <Timer className="h-5 w-5" /> },
     { path: '/chat', label: t('chat'), icon: <MessageSquare className="h-5 w-5" /> },
     { path: '/settings', label: t('settings'), icon: <Settings className="h-5 w-5" /> },
   ];

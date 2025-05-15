@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useI18n } from '@/lib/i18n';
 import { useAuth } from '@/lib/auth/AuthContext';
-import { Menu, X, Home, Folders, CalendarClock, MessageSquare, Settings } from 'lucide-react';
+import { Menu, X, Home, Folders, CalendarClock, MessageSquare, Settings, Timer } from 'lucide-react';
 import { useData } from '@/lib/data/DataContext';
 
 const Navbar: React.FC = () => {
@@ -17,6 +17,7 @@ const Navbar: React.FC = () => {
     { path: '/dashboard', label: t('dashboard'), icon: <Home className="h-5 w-5" /> },
     { path: '/projects', label: t('projects'), icon: <Folders className="h-5 w-5" /> },
     { path: '/sessions', label: t('sessions'), icon: <CalendarClock className="h-5 w-5" /> },
+    { path: '/focus-timer', label: 'Focus Timer', icon: <Timer className="h-5 w-5" /> },
     { path: '/chat', label: t('chat'), icon: <MessageSquare className="h-5 w-5" /> },
     { path: '/settings', label: t('settings'), icon: <Settings className="h-5 w-5" /> },
   ];

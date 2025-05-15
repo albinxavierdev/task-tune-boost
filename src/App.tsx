@@ -20,6 +20,7 @@ import ProjectDetails from "./pages/Projects/ProjectDetails";
 import SessionsList from "./pages/Sessions/SessionsList";
 import ChatRoom from "./pages/Chat/ChatRoom";
 import Settings from "./pages/Settings";
+import FocusTimer from "./pages/FocusTimer";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -100,6 +101,17 @@ const App = () => {
                       <PrivateRoute>
                         <Layout>
                           <Settings />
+                        </Layout>
+                      </PrivateRoute>
+                    } 
+                  />
+                  
+                  <Route 
+                    path="/focus-timer" 
+                    element={
+                      <PrivateRoute>
+                        <Layout>
+                          <FocusTimer />
                         </Layout>
                       </PrivateRoute>
                     } 

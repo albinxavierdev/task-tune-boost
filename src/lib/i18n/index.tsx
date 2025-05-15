@@ -17,6 +17,7 @@ const translations: TranslationsType = {
     sessions: "Sessions",
     chat: "Chat",
     settings: "Settings",
+    focusTimer: "Focus Timer",
     
     // Auth
     login: "Login",
@@ -102,6 +103,18 @@ const translations: TranslationsType = {
     notifications: "Notifications",
     emailNotifications: "Email Notifications",
     
+    // Focus Timer
+    readyToLockIn: "Ready to lock in on your idea?",
+    selectCategory: "Select a category and start the timer",
+    daysLockedIn: "Days Locked In",
+    keepGoing: "Keep going to increase your streak!",
+    addFreedomProject: "Add Freedom Project",
+    trackProgress: "Track specific project progress",
+    autoPlayMusic: "Auto Play Music",
+    code: "Code",
+    market: "Market",
+    design: "Design",
+    
     // General
     loading: "Loading...",
     save: "Save",
@@ -117,6 +130,7 @@ const translations: TranslationsType = {
     sessions: "सेशन्स",
     chat: "चैट",
     settings: "सेटिंग्स",
+    focusTimer: "फोकस टाइमर",
     
     // Auth
     login: "लॉगिन",
@@ -201,6 +215,18 @@ const translations: TranslationsType = {
     hindi: "हिंदी",
     notifications: "सूचनाएं",
     emailNotifications: "ईमेल सूचनाएं",
+    
+    // Focus Timer
+    readyToLockIn: "अपने आइडिया पर फोकस करने के लिए तैयार हैं?",
+    selectCategory: "एक श्रेणी चुनें और टाइमर शुरू करें",
+    daysLockedIn: "फोकस के दिन",
+    keepGoing: "अपनी स्ट्रीक बढ़ाने के लिए जारी रखें!",
+    addFreedomProject: "फ्रीडम प्रोजेक्ट जोड़ें",
+    trackProgress: "विशिष्ट प्रोजेक्ट प्रगति को ट्रैक करें",
+    autoPlayMusic: "स्वचालित रूप से संगीत चलाएं",
+    code: "कोड",
+    market: "मार्केट",
+    design: "डिज़ाइन",
     
     // General
     loading: "लोड हो रहा है...",
